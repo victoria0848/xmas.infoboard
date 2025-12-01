@@ -1,0 +1,455 @@
+/* --- FONTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Berkshire+Swash&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Syne:wght@400..800&display=swap');
+:root{
+  --panel-bg: rgba(255,255,255,0.75);
+  --panel-border: #5655550d;
+  --panel-radius: 40px;
+  --outline-radius: 46px;
+  --outline-offset: -12px;
+}
+ 
+/* GLOBAL STYLING */
+*{
+  box-sizing: border-box;
+  margin:0; padding:0;
+}
+ 
+html, body{
+  height:100%;
+  overflow: hidden !important;
+}
+ 
+body{
+  display: grid;
+  height: 100vh;
+  width: 100vw;
+  grid-template-areas:
+    "news getCopenhagenTime content"
+    "news getCopenhagenSubRow content"
+    "departures menu content";
+  grid-template-columns: 1fr 0.9fr 1.3fr;
+  grid-template-rows: 2fr 0.3fr 0.4fr;
+  gap: 3rem;
+  padding: 2rem;
+ 
+  background: linear-gradient(to bottom right, rgb(15, 93, 14), rgba(107, 25, 7, 0.584)),
+              url("../images/xmasbcc.jpg") center/cover no-repeat;
+  /* animation: slowMove 30s linear infinite; */
+  color: #166138;
+  font-family: "Poppins", sans-serif !important;
+}
+h1, h2{
+  font-family: "Berkshire Swash", sans-serif;
+}
+/* EVERY SECTION GETS PANEL STYLING + WHITE OUTLINE */
+#news, #content, #menu, #departures, #getCopenhagenTime, #getCopenhagenDate, #weather, #wc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ 
+  background: var(--panel-bg);
+  border-radius: var(--panel-radius);
+  border: 4px solid var(--panel-border);
+ 
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+}
+ 
+/* WHITE OUTLINE FOR ALL SECTIONS */
+#news::before,
+#content::before,
+#menu::before,
+#departures::before,
+#getCopenhagenTime::before,
+#getCopenhagenDate::before,
+#weather::before,
+#wc::before {
+  content: "";
+  position: absolute;
+  inset: var(--outline-offset);
+  border-radius: var(--outline-radius);
+  border: 1px solid #ffffff;
+  pointer-events: none;
+  z-index: 0;
+}
+ 
+/* GRID AREA ASSIGNMENTS */
+#news { grid-area: news; }
+#departures { grid-area: departures; }
+#getCopenhagenTime { grid-area: getCopenhagenTime; }
+#getCopenhagenSubRow { grid-area: getCopenhagenSubRow; }
+#menu { grid-area: menu; }
+#content { grid-area: content; }
+ 
+/* -----------------------------
+   SubRow container
+------------------------------ */
+#getCopenhagenSubRow{
+  display: flex;
+  justify-content: center;
+  align-items: center; /* center vertically instead of stretching */
+  gap: 2rem;
+  height: auto; /* allow panels to set their own height */
+  padding: 12px 0; /* vertical padding smaller */
+  overflow: visible;
+}
+ 
+/* Subrow panels: equal size */
+#getCopenhagenDate,
+#weather,
+#wc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--panel-bg);
+  border-radius: 41px;
+  padding: 0.4rem 1rem; /* more horizontal padding for width, smaller vertical padding for height */
+  border: 2px solid var(--panel-border);
+  position: relative;
+  z-index: 1;
+  flex: 1.2; /* slightly wider relative to spacing */
+  height: 60px; /* fixed shorter height */
+  overflow: visible;
+  color: #166138;
+}
+#weather span{
+  font-weight: 700;
+  color: #166138;
+}
+ 
+/* WC: two SVG icons inside */
+#wc {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 0.4rem 1rem;
+}
+ 
+.wc-icon svg {
+  display: block;
+  width: auto;
+  height: 70%; /* slightly smaller to fit reduced height */
+}
+.wc-arrow svg {
+  height: 90%;   /* bigger than the mail icon */
+}
+ 
+.wc-mail svg {
+  animation: wcBlink 3s infinite;
+  width: auto;
+}
+ 
+@keyframes wcBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+ 
+/* DATE PANEL */
+#getCopenhagenDate {
+  font-size: 1.6rem;
+  font-weight: 400;  
+  text-align: center;
+}
+ 
+/* WEATHER PANEL */
+#weather {
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  justify-content: center;
+}
+#weather .weather-city{ font-weight: 500; }
+#weather .weather-icon{ font-size: 1.1rem; }
+#weather .weather-temp{ font-weight: 400; }
+ 
+/* TIME PANEL */
+#getCopenhagenTime{
+  font-size: 4rem;
+  font-weight: 500;
+  /* box-shadow: inset 0 0 8px rgba(255,255,255,0.3); */
+  padding: 1.5rem;
+  text-align: center;
+  color: #166138;
+}
+#getCopenhagenTime .time{
+  font-size: 4rem;
+  font-weight: 600;
+}
+/* MENU PANEL */
+#menu{
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 1rem;
+}
+#menu h2{
+  text-align: center;
+  font-size: 48px;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+#menu .card{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 40px;
+  background: rgba(248, 173, 30, 0.50);
+  color: #166138;
+  width: 100%;
+  gap: 0.9rem;
+  margin-bottom: 0.7rem;
+  min-height: 90px;           /* adjust if needed */
+  height: 90px;               /* fixed uniform height */
+  overflow: hidden;    
+  text-align: left;
+}
+#menu-card .dishes{
+  font-size: 1.6rem;
+  margin-left: 15px;
+}
+#menu-card .day{
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+#menu .card.today {
+  background: #F8AD1E;
+  font-weight: 400 !important;
+  font-size: 1.6rem;
+  color: #166138;
+  margin-left: 0;
+  gap: 0rem;
+}
+
+/* Today card stands out but NOT bold */
+/* NEWS */
+#news{
+  padding: 0.3rem;
+}
+/* H2 */
+#news h2{
+  top: 0;
+  font-size: 3rem;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 0rem;
+  margin-bottom: 0.9rem;
+}
+#news .card.fade-in{
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* <- Tvinger indholdet til at centrere horisontalt */
+  border-radius: 30px;
+  padding: 1rem;
+  gap: 0.5rem;
+  min-height: 12vh;
+  width: 100%;
+}
+/* Linket */
+#news .card.fade-in a{
+  display: block;
+  width: 100%;              /* <- Fylder hele bredden */
+  text-align: center;       /* <- Centrerer tekst i linket */
+  color: #166138;
+  font-size: 1.5rem;
+  text-decoration: none;
+  font-weight: 400;
+}
+/* Dato-div */
+#news .date{           /* <- Fylder hele bredden */
+  text-align: center;       /* <- Centreret */
+  font-size: 1.3rem;
+  margin: 0;
+}
+/* H5 */
+#news .card.fade-in h5{
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+ 
+/* CONTENT PANEL */
+#content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 0.3rem;
+  padding: 20px;
+  max-height: 100%;
+  position: relative;
+}
+#content h1{ 
+  text-align: center; 
+  font-size: 48px; 
+  font-weight: 400; 
+  margin-bottom: 2.5rem; 
+}
+#content .schedule-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  min-height: 90px;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+
+  border-radius: 15px;
+  font-weight: 600;
+  text-align: center;
+
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+#content .schedule-card div {
+  width: 100%;
+  margin-top: 0.2rem;
+  font-size: 1.2rem;
+}
+#content .schedule-card .schedule-status {
+  display: flex;
+  justify-content: right;
+  margin-right: 1rem;
+
+}
+#content .schedule-card .schedule-team {
+  display: flex;
+  justify-content: left;
+  margin-left: 4rem;
+
+}
+#content .schedule-card .schedule-room {
+  display: flex;
+  justify-content: left;
+  margin-left: 4rem;
+
+}
+/* ===== EDU COLORS ===== */
+.schedule-card.edu-praktik {
+  background: #B11E31 !important;
+  color: #fff !important;
+}
+
+.schedule-card.edu-grafisk {
+  background: #F8AD1E !important;
+  color: #ffffff !important;
+}
+
+.schedule-card.edu-web {
+  background: #166138 !important;
+  color: #fff !important;
+}
+
+/* Ensure inner text stays fully visible */
+.schedule-card * {
+  opacity: 1 !important;
+}
+
+/* ROW INSIDE CARD */
+.schedule-row {
+  display: flex;
+  width: 100%;                 /* FULL WIDTH */
+  padding: 8px 0;
+  gap: 10px;
+
+  justify-content: space-between;
+  align-items: center;
+
+  text-align: left;            /* More natural reading */
+  border-radius: 10px;
+  font-size: 16px;
+  color: inherit;              /* follows card color */
+}
+
+/* Text fields inside row */
+.schedule-title,
+.schedule-room,
+.schedule-team,
+.schedule-status {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* left aligned */
+  text-align: left;
+}
+ 
+/* DEPARTURES PANEL */
+#departures{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 10px;
+  border-radius: 40px;
+  background: rgba(255,255,255,0.79);
+  box-shadow: inset 0 0 8px rgba(255,255,255,0.4), 0 0 10px rgba(0,0,0,0.1);
+  padding: 1rem;
+}
+#departures h2{
+  text-align: center;
+  font-size: 48px;
+  font-weight: 400;
+  margin-bottom: 1.8rem; 
+}
+#departures .card {
+  min-height: 60px;
+  height: 20px;          /* fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  align-items: center;
+  background: rgba(248, 173, 30, 0.50); 
+  border-radius: 40px;
+  padding: 10px 30px;
+}
+#departures p{
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #166138;
+}
+ 
+/* MEDIA QUERIES */
+@media (max-width:1000px){
+  body{
+    grid-template-areas:
+      "getCopenhagenTime"
+      "departures"
+      "news"
+      "weather"
+      "menu"
+      "content";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    padding: 1rem;
+    overflow: auto;
+  }
+  #content,
+  #menu,
+  #departures,
+  #news,
+  #getCopenhagenTime,
+  #weather{
+    width: 100%;
+    height: auto;
+    transform: none;
+  }
+}
+ 
+@media (max-width:600px){
+  body{
+    padding: 0.8rem;
+    gap: 0.8rem;
+  }
+  h2{ font-size: 1rem; }
+  p{ font-size: 0.95rem; }
+}
