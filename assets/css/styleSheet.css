@@ -194,6 +194,7 @@ h1, h2{
 }
 #menu .card{
   display: flex;
+  flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   padding: 1rem;
@@ -210,7 +211,10 @@ h1, h2{
 }
 #menu-card .dishes{
   font-size: 1.6rem;
-  margin-left: 15px;
+  margin-left: 0;
+  max-width: 60vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 #menu-card .day{
   font-size: 1.4rem;

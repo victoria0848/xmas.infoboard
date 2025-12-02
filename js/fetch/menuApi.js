@@ -96,13 +96,10 @@ async function displayMenu() {
         const dishes = day.dish || day.dishes || day.Dish || day.Dishes || [];
         const dishesArray = Array.isArray(dishes) ? dishes : [dishes];
 
-        // Normalize comparison
         const normalize = s => String(s).toLowerCase().trim();
         const isToday = normalize(dayName) === todayName;
-
         const cardClass = isToday ? "card today" : "card";
 
-        // --- FILTER OUT THE SENTENCE ---
         const cleanedDishes = dishesArray
           .map(d => d ? d.replace(removePhrase, "").trim() : "")
           .filter(d => d.length > 0);
@@ -115,10 +112,24 @@ async function displayMenu() {
         `;
       }).join("");
 
+    // --- APPLY THE TEXT SHORTENING FUNCTION ---
+    shortenDishes();
+
   } catch (err) {
     console.error("Full error:", err);
     container.innerHTML = `<p style="color: #B11E31;;">Error: ${err.message}</p>`;
   }
+}
+
+/* --- SHORTEN DISHES FUNCTION (adds … after 15 chars) --- */
+function shortenDishes() {
+  const dishes = document.querySelectorAll('#menu .dishes');
+  dishes.forEach(dish => {
+    const text = dish.textContent.trim();
+    if (text.length > 33) {
+      dish.textContent = text.substring(0, 33) + "...";
+    }
+  });
 }
 
 /* --- Auto Run --- */
