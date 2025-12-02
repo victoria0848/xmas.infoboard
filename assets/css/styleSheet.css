@@ -211,22 +211,23 @@ h1, h2{
 }
 #menu-card .dishes{
   font-size: 1.6rem;
-  margin-left: 0;
+  margin-left: 28px;
   max-width: 60vw;
   overflow: hidden;
-  text-overflow: ellipsis;
+  gap: 1.3rem;
 }
 #menu-card .day{
   font-size: 1.4rem;
   font-weight: 400;
 }
 #menu .card.today {
+  display: flex;
   background: #F8AD1E;
   font-weight: 400 !important;
   font-size: 1.6rem;
   color: #166138;
   margin-left: 10px;
-  gap: 0rem;
+  gap: 1.2rem;
 }
 
 /* Today card stands out but NOT bold */
