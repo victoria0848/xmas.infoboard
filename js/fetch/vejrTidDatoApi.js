@@ -13,11 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
       second: "2-digit",
       hour12: false
     };
-
-    const rawTime = now.toLocaleTimeString("da-DK", timeOptions);
-    const [hh, mm, ss] = rawTime.split(":");
-
-    timeContainer.innerHTML = `${hh}:<span class="red">${mm}</span>:<span class="red">${ss}</span>`;
+    timeContainer.textContent = now.toLocaleTimeString("da-DK", timeOptions);
 
     // Date
     const dateOptions = {
@@ -29,6 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
     dateContainer.textContent = now.toLocaleDateString("da-DK", dateOptions);
   }
 
+  // Initial update
   updateCopenhagenTimeAndDate();
+
+  // Update every second
   setInterval(updateCopenhagenTimeAndDate, 1000);
 });

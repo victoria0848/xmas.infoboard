@@ -177,10 +177,7 @@ h1, h2{
   padding: 1.5rem;
   text-align: center;
   color: #166138;
-}
-#getCopenhagenTime .time{
-  font-size: 4rem;
-  font-weight: 600;
+    font-family: "Berkshire Swash", sans-serif;
 }
 /* MENU PANEL */
 #menu{
@@ -204,7 +201,7 @@ h1, h2{
   background: rgba(248, 173, 30, 0.50);
   color: #166138;
   width: 100%;
-  gap: 0.9rem;
+  gap: 1.2rem;
   margin-bottom: 0.7rem;
   min-height: 90px;           /* adjust if needed */
   height: 90px;               /* fixed uniform height */
@@ -224,7 +221,7 @@ h1, h2{
   font-weight: 400 !important;
   font-size: 1.6rem;
   color: #166138;
-  margin-left: 0;
+  margin-left: 10px;
   gap: 0rem;
 }
 
