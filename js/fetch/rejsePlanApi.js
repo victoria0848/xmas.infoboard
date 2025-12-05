@@ -87,9 +87,9 @@ const depDateTime = new Date(`${dateStr}T${timeStr}:00`)
  
           return `
           <div class="card departure-card" style="${highlightStyle}">
-            <h3>${name}</h3>
-            ${direction ? `<div><h3>${direction}</h3></div>` : ""}
-            ${time ? `<div><h3>${delay}${time}</h3></div>` : ""}
+            <h3 class"depname">${name}</h3>
+            ${direction ? `<div class="depdir"><h3>${direction}</h3></div>` : ""}
+            ${time ? `<div><h3 class="deptime">${delay}${time}</h3></div>` : ""}
           </div>
         `;
         })
