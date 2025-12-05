@@ -118,6 +118,7 @@ h1, h2{
 #weather span{
   font-weight: 700;
   color: #166138;
+    font-family: "Poppins", sans-serif !important;
 }
  
 /* WC: two SVG icons inside */

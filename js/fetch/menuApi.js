@@ -61,7 +61,7 @@ async function displayMenu() {
 
   try {
     const data = await getCanteenMenu();
-    console.log("Full API data:", JSON.stringify(data, null, 2));
+
 
     let days = [];
 
