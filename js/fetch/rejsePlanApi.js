@@ -103,7 +103,7 @@ const depDateTime = new Date(`${dateStr}T${timeStr}:00`)
 }
  
 document.addEventListener('DOMContentLoaded', displayDepartures)
-setInterval(displayDepartures, 30000) // opdater hver 5 min
+setInterval(displayDepartures, 50000); // Opdater hver 50. sekund
 
 
  
