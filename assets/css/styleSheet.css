@@ -198,7 +198,7 @@ h1, h2{
 #menu .card{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: left;
   align-items: center;
   padding: 1rem;
   border-radius: 40px;
@@ -429,7 +429,9 @@ h1, h2{
 }
 #departures .deptime{
   display: flex;
-  justify-content: flex-end;
+  justify-content: right;
+  gap: 10px;
+  
 }
 
 
